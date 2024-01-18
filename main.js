@@ -16,7 +16,7 @@ newsArticles.forEach(function (article) {
   const newsItem = document.createElement('div');
   newsItem.innerHTML = `
     <h3>${article.title}</h3>
-    <img src="${article.urlToImage}" />
+    <img src="${article.urlToImage}" class="news-image" />
     <p>${article.description}</p>
     <a href="${article.url}" target="_blank">Läs mer</a>
     <hr>
