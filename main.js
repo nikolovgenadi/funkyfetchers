@@ -9,10 +9,28 @@ async function fetchNews(url) {
       const response = await axios.get(url);
       console.log(response);
 
+      const newsArticles = response.data.articles;
+const newsCont = document.querySelector(".toppnews-container");
+
+newsArticles.forEach(function (article) {
+  const newsItem = document.createElement('div');
+  newsItem.innerHTML = `
+    <h3>${article.title}</h3>
+    <img src="${article.urlToImage}" />
+    <p>${article.description}</p>
+    <a href="${article.url}" target="_blank">Läs mer</a>
+    <hr>
+  `;
+  newsCont.appendChild(newsItem);
+});
+
     } catch (error) {
       console.log("Something went wrong: " + error);
     }
 }
 
 fetchNews(url);	
+
+
+
 

@@ -1,0 +1,12 @@
+.section-container {
+    display: flex;
+}
+.foot-menu-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.toppnews-container {
+    width: 100%;
+    height: auto;
+}
