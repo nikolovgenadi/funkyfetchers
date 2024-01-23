@@ -34,7 +34,8 @@
 		color: white;
 	}
 
-	/* Top Nav Menu */
+	/* Nav Topbar menu  */
+
 	.topbar {
 		position: fixed;
 		top: 0;
@@ -66,27 +67,13 @@
 		margin-top: 7px;
 	}
 
-	.search {
-		margin-right: 30px;
-	}
-
-	#search-input {
-		border-radius: 50px;
-		padding-left: 5px;
-		height: 2rem;
-		outline: none;
-		border: none;
-		margin: 0;
-	}
-
 	.top-menu-right {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
 
-	/* Sidebar Nav Menu */
-
+	/* Nav sidebar menu  */
 	.sidebar {
 		height: 100%;
 		width: 250px;
@@ -101,6 +88,7 @@
 		padding: 3rem 20px;
 		transition: 0.2s ease-in-out;
 	}
+
 	.sidebar-active {
 		width: 250px;
 		left: 0;
