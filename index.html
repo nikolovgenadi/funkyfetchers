@@ -1,37 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Vite App</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script type="module" src="/main.js" defer></script>
+		<link rel="stylesheet" href="style.css" />
+		<title>Vite App</title>
+	</head>
 
-  <body>
-    <div class="section-container">
-  <section class="toppnews">
-<p class="topp-title">Toppnyheter</p>
-<div class="toppnews-container">
+	<body>
+		<header>
+			<nav class="topbar">
+				<div class="topbar-container">
+					<ul class="topbar-menu-items">
+						<li class="topbar-menu-item" id="menu-btn">Meny</li>
+						<li class="topbar-menu-item">{FunkyFetchers}</li>
+						<li class="topbar-menu-item">Toppnyheter</li>
+						<li class="topbar-menu-item">Senaste nytt</li>
+						<li class="topbar-menu-item">Bevakningar</li>
 
-</div>
-  </section>
+						<div class="search" id="search">
+							<input type="text" id="search-input" placeholder="Sök.." />
+						</div>
+					</ul>
+					<div class="top-menu-right">
+						<div class="login">
+							<button id="login">Logga in</button>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-  <section class="lastnews hidden">
-    <p class="last-title">Senaste nytt</p>
-  </section>
-</div>
+		<div class="section-container">
+			<section class="toppnews">
+				<p class="topp-title">Toppnyheter</p>
+				<div class="toppnews-container"></div>
+			</section>
 
-<footer class="foot">
-  <ul class="foot-menu-buttons">
-<li class="foot-menu-btn">Nyheter</li>
-<li class="foot-menu-btn">Ekonomi</li>
-<li class="foot-menu-btn">Nyheter</li>
-<li class="foot-menu-btn">Bevackningar</li>
-<li class="foot-menu-btn">Upptäck</li>
-<li class="foot-menu-btn">Mitt konto</li>
-  </ul>
-</footer>
-  </body>
+			<section class="lastnews hidden">
+				<p class="last-title">Senaste nytt</p>
+			</section>
+		</div>
+
+		<footer class="foot">
+			<ul class="foot-menu-buttons">
+				<li class="foot-menu-btn">Nyheter</li>
+				<li class="foot-menu-btn">Ekonomi</li>
+				<li class="foot-menu-btn">Nyheter</li>
+				<li class="foot-menu-btn">Bevackningar</li>
+				<li class="foot-menu-btn">Upptäck</li>
+				<li class="foot-menu-btn">Mitt konto</li>
+			</ul>
+		</footer>
+	</body>
 </html>
