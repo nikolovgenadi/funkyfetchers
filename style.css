@@ -117,4 +117,9 @@
 	.sidebar ul li {
 		margin-bottom: 1rem;
 	}
+
+	/* Display none */
+	.foot-menu-buttons {
+		display: none;
+	}
 }
