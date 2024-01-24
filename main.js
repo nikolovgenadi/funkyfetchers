@@ -14,6 +14,13 @@ async function fetchNews(url) {
 const newsCont = document.querySelector(".toppnews-container");
 
 newsArticles.forEach(function (article) {
+  if (
+    article.title &&
+    article.urlToImage &&
+    article.description &&
+    article.url &&
+    article.publishedAt
+  ) {
   const newsItem = document.createElement('div');
   newsItem.innerHTML = `
     <h3>${article.title}</h3>
@@ -23,12 +30,14 @@ newsArticles.forEach(function (article) {
     <hr>
   `;
   newsCont.appendChild(newsItem);
+  }
 });
 
     } catch (error) {
       console.log("Something went wrong: " + error);
     }
 }
+
 
 fetchNews(url);	
 

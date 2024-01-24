@@ -204,17 +204,8 @@ p {
 }
 
 
-@media (max-width: 480px) {
-	.topbar-menu-item {
-		display: none;
-	}
-	
-	#menu-btn {
-		display: ;
-	}
-
-
-}
+/* @media (max-width: 480px) {
+} */
 
 /* Andy Desktop */
 @media screen and (min-width: 1024px) {
