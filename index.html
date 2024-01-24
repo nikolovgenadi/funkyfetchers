@@ -16,7 +16,7 @@
 			<nav class="topbar">
 				<div class="topbar-container">
 					<ul class="topbar-menu-items">
-						<li class="topbar-menu-item" id="menu-btn">Meny</li>
+						<li class="topbar-menu-item menu-btn">Meny</li>
 						<li class="topbar-menu-item">{FunkyFetchers}</li>
 						<li class="topbar-menu-item">Toppnyheter</li>
 						<li class="topbar-menu-item">Senaste nytt</li>
@@ -26,6 +26,21 @@
 							<input type="text" id="search-input" placeholder="Sök.." />
 						</div>
 					</ul>
+        </div>
+
+          <div class="mobile-topbar-container">
+            <ul class="mobile-topbar-menu-items">
+              <li class="mobile-topbar-menu-item menu-btn">Meny</li>
+              <li class="mobile-topbar-menu-item">Toppnyheter</li>
+              <li class="mobile-topbar-menu-item">Senaste</li>
+            </ul>
+          </div>
+            <div class="mobile-search" id="search">
+              <input type="text" id="mobile-search-input" placeholder="Sök.." />
+            </div>
+  
+          
+
 					<div class="top-login-menu-right">
 						<div class="login">
 							<button id="login">Logga in</button>
@@ -45,6 +60,7 @@
 			</ul>
 		</nav>
 
+<main>
 		<div class="section-container" id="section-container">
 			<section class="toppnews">
 				<p class="topp-title">Toppnyheter</p>
@@ -55,6 +71,7 @@
 				<p class="last-title">Senaste nytt</p>
 			</section>
 		</div>
+  </main>
 
 		<footer class="foot">
 			<ul class="foot-menu-buttons">

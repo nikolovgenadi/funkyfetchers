@@ -1,8 +1,12 @@
 // Sidebar Toggle
-const menuButton = document.getElementById('menu-btn')
-menuButton.addEventListener('click', function () {
-	const sideBar = document.getElementById('sidebar')
-	sideBar.classList.toggle('sidebar-active')
+const menuButtons = document.querySelectorAll('.menu-btn');
+
+menuButtons.forEach((button) =>{
+	button.addEventListener('click', function () {
+		const sideBar = document.getElementById('sidebar')
+		sideBar.classList.toggle('sidebar-active')
+	})
+	
 })
 
 // Hides Sidebar when you click outside it
