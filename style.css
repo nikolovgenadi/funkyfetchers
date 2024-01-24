@@ -1,334 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 .section-container {
-	display: flex;
+  display: flex;
 }
 .foot-menu-buttons {
-	list-style: none;
-	display: flex;
-	justify-content: space-between;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 .toppnews-container {
-	width: 100%;
-	height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .news-image {
-	width: 100%;
+  width: 100%;
 }
 header {
-    background-color: #333;
-    width: 100%;
-    height: 100px;
-    color: white;
+  background-color: #333;
+  width: 100%;
+  height: 100px;
+  color: white;
 }
 .topbar-container {
-    display: none;
+  display: none;
 }
 .mobile-topbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
 .mobile-topbar-menu-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  cursor: pointer;
 }
 .mobile-topbar-menu-item {
-    margin-right: 15px;
-    margin-top: 7px;
+  margin-right: 15px;
+  margin-top: 7px;
 }
 .mobile-topbar-menu-item:nth-child(1) {
-    margin-right: 80px;
-    padding: 5px;
-    border: 1px solid white;
+  margin-right: 80px;
+  padding: 5px;
+  border: 1px solid white;
 }
 /*.sidebar {
     display: none;
 }*/
 
 .mobile-search {
-    text-align: center;
+  text-align: center;
 }
 
 #mobile-search-input {
-    border-radius: 50px;
-    padding-left: 5px;
-    height: 1.5rem;
-    outline: none;
-    border: none;
-    margin: 0;
+  border-radius: 50px;
+  padding-left: 5px;
+  height: 1.5rem;
+  outline: none;
+  border: none;
+  margin: 0;
 }
 
 /* Zabi style för signin/ut */
 #signup-body,
 #signin-body {
-    background-color: #344a72;
-    font-family: "Roboto", sans-serif;
+  background-color: #344a72;
+  font-family: "Roboto", sans-serif;
 }
-.signup-box{
-    width: 360px;
-    height: 620px;
-    margin: auto;
-    background-color: white;
-    border-radius: 3px;
+.signup-box {
+  width: 360px;
+  height: 620px;
+  margin: auto;
+  background-color: white;
+  border-radius: 3px;
 }
-.Login-Box{
-    width: 360px;
-    height: 280px;
-    margin: auto;
-    border-radius: 3px;
-    background-color: white;
-
+.Login-Box {
+  width: 360px;
+  height: 280px;
+  margin: auto;
+  border-radius: 3px;
+  background-color: white;
 }
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
-form{
-    width: 300px;
-    margin-left: 20px;
-
+form {
+  width: 300px;
+  margin-left: 20px;
 }
-form label{
-    display: flex;
-    margin-top: 20px;
-    font-size: 18px;
+form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
 }
-form input{
-    width: 100%;
-    padding: 7px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 6px;
-    outline: none;
+form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
 }
- input[type="button"]{
-    width: 320px;
-    height: 35px;
-    margin-top: 20px;
-    border: none;
-    background-color: rgb(27, 195, 139); 
-    color: white;
-    font-size: 18px;
- }
-p{
-    text-align: center;
-    padding-top: 20px;
-    font-size: 15px;
-
+input[type="button"] {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: rgb(27, 195, 139);
+  color: white;
+  font-size: 18px;
 }
-.parat-2{
-    text-align: center;
-    color: white;
-    font-size: 15px;
-    margin-top: -10px;
+p {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 15px;
 }
-.parat-2 a{
-    color: #49c1a2;
+.parat-2 {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: -10px;
+}
+.parat-2 a {
+  color: #49c1a2;
 }
 /* slut för style in/ut */
-@media screen and (min-width: 768px) {
-    header {
-        height: 50px;
-    }
-    .mobile-search {
-        display: none;
-    }
-    .mobile-topbar-container {
-        display: none;
-    }
-    .topbar-container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 10px 20px;
-	}
+@media (max-width: 768px) {
+  header {
+    height: 50px;
+  }
+  .mobile-search {
+    display: none;
+  }
+  .mobile-topbar-container {
+    display: none;
+  }
+  .topbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
 
-	.topbar-menu-items {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		cursor: pointer;
-	}
+  .topbar-menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    cursor: pointer;
+  }
 
-	.topbar-menu-item {
-		margin-right: 15px;
-		margin-top: 7px;
-	}
-    .search {
-		margin-right: 30px;
-	}
+  .topbar-menu-item {
+    margin-right: 15px;
+    margin-top: 7px;
+  }
+  .search {
+    margin-right: 30px;
+  }
 
-	#search-input {
-		border-radius: 50px;
-		padding-left: 5px;
-		height: 2rem;
-		outline: none;
-		border: none;
-		margin: 0;
-	}
+  #search-input {
+    border-radius: 50px;
+    padding-left: 5px;
+    height: 2rem;
+    outline: none;
+    border: none;
+    margin: 0;
+  }
 }
 /* Nav sidebar menu  */
 .sidebar {
-    height: 100%;
-    width: 200px;
-    background-color: #f4f4f4;
-    position: fixed;
-    top: 3rem;
-    left: -250px;
-    bottom: 0;
-    z-index: 99;
-    overflow-y: auto;
-    padding: 3rem 20px;
-    transition: 0.2s ease-in-out;
+  height: 100%;
+  width: 200px;
+  background-color: #f4f4f4;
+  position: fixed;
+  top: 3rem;
+  left: -250px;
+  bottom: 0;
+  z-index: 99;
+  overflow-y: auto;
+  padding: 3rem 20px;
+  transition: 0.2s ease-in-out;
 }
 
 .sidebar-active {
-    width: 250px;
-    left: 0;
-    transition: 0.3s ease-in-out;
+  width: 250px;
+  left: 0;
+  transition: 0.3s ease-in-out;
 }
 .sidebar ul {
-    list-style: none;
+  list-style: none;
 }
 
 .sidebar ul li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 
-
-
-
-
-/* Andy Desktop */
-
-@media screen and (min-width: 1024px) {
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	body {
-		margin: 0;
-		font-family: Arial, sans-serif;
-		/* display: flex; */
-		/* flex-direction: column; */
-	}
-
-    header {
-        height: 50px;
-    }
-
-	.section-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.toppnews-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: auto;
-	}
-
-	.toppnews-container div {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		/* width: 100%; */
-		height: auto;
-	}
-
-	.news-image {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 60%;
-	}
-
-	/* Nav Topbar menu  */
-
-	.topbar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 100;
-		background-color: #333;
-		height: 3rem;
-		align-items: center;
-	}
-
-	.topbar-container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 10px 20px;
-	}
-
-	.topbar-menu-items {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		cursor: pointer;
-	}
-
+@media (max-width: 480px) {
 	.topbar-menu-item {
-		margin-right: 15px;
-		margin-top: 7px;
-	}
-    .mobile-topbar-container {
-        display: none;
-    }
-
-	/* Search input */
-
-	.search {
-		margin-right: 30px;
-	}
-
-	#search-input {
-		border-radius: 50px;
-		padding-left: 5px;
-		height: 2rem;
-		outline: none;
-		border: none;
-		margin: 0;
-	}
-    .mobile-search {
-        display: none;
-    }
-
-	.top-login-menu-right {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	
-	.section-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding-top: 3rem;
-	}
-
-
-
-	/* Display none */
-	.foot-menu-buttons,
-	.last-title {
 		display: none;
 	}
+	
+	#menu-btn {
+		display: ;
+	}
+
+
 }
 
+/* Andy Desktop */
+@media screen and (min-width: 1024px) {
+  body {
+    font-family: Arial, sans-serif;
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+
+  header {
+    height: 50px;
+  }
+
+  #menu-btn {
+    display: none;
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .toppnews-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .toppnews-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    height: auto;
+  }
+
+  .news-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+  }
+
+  /* Nav Topbar menu  */
+
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #333;
+    height: 3rem;
+    align-items: center;
+  }
+
+  .topbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .topbar-menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .topbar-menu-item {
+    margin-right: 15px;
+    margin-top: 7px;
+  }
+  .mobile-topbar-container {
+    display: none;
+  }
+
+  /* Search input */
+
+  .search {
+    margin-right: 30px;
+  }
+
+  #search-input {
+    border-radius: 50px;
+    padding-left: 5px;
+    height: 2rem;
+    outline: none;
+    border: none;
+    margin: 0;
+  }
+  .mobile-search {
+    display: none;
+  }
+
+  .top-login-menu-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+  }
+
+  /* Display none */
+  .foot-menu-buttons,
+  .last-title {
+    display: none;
+  }
+}

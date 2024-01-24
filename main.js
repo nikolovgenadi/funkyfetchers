@@ -1,7 +1,8 @@
 import axios from "axios";
 
 let country = "Sweden"
-const apiKey = "b2390ee5e1844aebb09d9b85a5ffa158";
+
+const apiKey = import.meta.env.VITE_API_KEY;
 const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
 
 async function fetchNews(url) {
