@@ -121,8 +121,9 @@
 }
 /* Zabi login/ut */
 
-body{
-    background-color:#344a72;
+#signup-body,
+#signin-body {
+    background-color: #344a72;
     font-family: "Roboto", sans-serif;
 }
 .signup-box{
