@@ -3,7 +3,30 @@ import axios from "axios";
 let country = "Sweden"
 
 const apiKey = import.meta.env.VITE_API_KEY;
+// const NEWSDATA_KEY = import.meta.env.VITE_NEWSDATA_KEY;
+// const NEWS_DATA_URL = `https://newsdata.io/api/1/news?apikey=${NEWSDATA_KEY}`
 const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
+
+// news data fetch
+// async function newsDataIo() {
+//   try {
+//     const response = await axios.get(NEWS_DATA_URL);
+//     console.log(response);
+
+//     const newsDataArticles = response.data.results;
+//     newsDataArticles.forEach(article)
+//     if (
+//       results.country &&
+//       results.
+//     ) {
+//     }
+//   }
+//   catch(error) {
+//     console.log(error);
+//   }
+// }
+
+// newsDataIo();
 
 async function fetchNews(url) {
     try {
