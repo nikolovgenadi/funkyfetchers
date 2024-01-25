@@ -14,11 +14,22 @@ const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
 //     console.log(response);
 
 //     const newsDataArticles = response.data.results;
-//     newsDataArticles.forEach(article)
+//     newsDataArticles.forEach(result)
 //     if (
 //       results.country &&
-//       results.
+//       results.category &&
+//       results.title &&
+//       results.image_url &&
+          // results.pubDate
 //     ) {
+        // const newsCont = document.querySelector(".toppnews-container");
+        // const newsItems = document.createElement('div');
+        // newsItems.innerHTML = 
+        // `<h3>${results.title}</h3>
+        // <img src="${results.image_url}" class="news-image" />
+        // <p>${results.description}</p>
+        // <a href="${results.source_url}" target="_blank">Läs mer</a>
+        // <hr>`;
 //     }
 //   }
 //   catch(error) {
@@ -42,7 +53,7 @@ newsArticles.forEach(function (article) {
     article.urlToImage &&
     article.description &&
     article.url &&
-    article.publishedAt
+    article.publishedAt &&
   ) {
   const newsItem = document.createElement('div');
   newsItem.innerHTML = `
