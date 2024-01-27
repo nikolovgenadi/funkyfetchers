@@ -1,55 +1,52 @@
 import axios from "axios";
 
-let country = "Sweden"
+document.addEventListener("DOMContentLoaded", async function () {
+  let country = "Sweden";
+  const apiKey = import.meta.env.VITE_API_KEY;
 
-const apiKey = import.meta.env.VITE_API_KEY;
-const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
-// const newsDataKey = import.meta.env.VITE_NEWSDATA_KEY;
-// const NEWS_DATA_URL = `https://newsdata.io/api/1/news?apikey=${newsDataKey}`
+  const categories = [
+    "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=" + apiKey,
+    "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey,
+    "https://newsapi.org/v2/everything?q=tesla&from=2023-12-26&sortBy=publishedAt&apiKey=" + apiKey,
+    "https://newsapi.org/v2/everything?q=apple&from=2024-01-25&to=2024-01-25&sortBy=popularity&apiKey=" + apiKey,
+    "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" + apiKey,
+  ];
+// fix the reset for each array
+  const dataObjects = {};
 
-// async function newsDataIo() {
-//   try {
-//     const response = await axios.get(NEWS_DATA_URL);
-//     console.log(response);
-
-//     const newsDataArticles = response.data.results;
-//     const newsCont = document.querySelector(".toppnews-container");
-
-//     newsDataArticles.forEach(result => {
-//       if (
-//         result.country &&
-//         result.category &&
-//         result.title &&
-//         result.image_url &&
-//         result.pubDate
-//       ) {
-//         const newsItems = document.createElement('div');
-//         newsItems.innerHTML = 
-//         `<h3>${result.title}</h3>
-//         <img src="${result.image_url}" class="news-image" />
-//         <p>${result.description}</p>
-//         <a href="${result.source_url}" target="_blank">Läs mer</a>
-//         <hr>`;
-
-//         newsCont.appendChild(newsItems);
-//       }
-//     });
-//   } catch(error) {
-//     console.log(error);
-//   }
-// }
-
-
-// newsDataIo();
-
-async function fetchNews(url) {
+  for (let index = 0; index < categories.length; index++) {
     try {
-      const response = await axios.get(url);
-      console.log(response);
+      const response = await axios.get(categories[index]);
+      const articles = response.data.articles;
+      dataObjects[index] = articles;
+      localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
+    } catch (error) {
+      console.error(`Error fetching the data from ${categories[index]};`, error);
+    }
+  }
 
-      const newsArticles = response.data.articles;
-      const newsCont = document.querySelector(".toppnews-container");
-      newsArticles.forEach(function (article) {
+  function displayNewsByIndex(index) {
+    const storedData = localStorage.getItem(`newsData_${index}`);
+
+    if (storedData) {
+      const articles = JSON.parse(storedData);
+      CreateArticlesInContainer(articles, index);
+    } else {
+      console.error(`No data found for ${index}.`);
+    }
+  }
+
+  function CreateArticlesInContainer(articles, index) {
+    const newsCont = document.querySelector(`#news-wrapper-${index}`);
+
+    if (!newsCont) {
+      console.error(`Container not found for ${index}.`);
+      return;
+    }
+
+    newsCont.innerHTML = "";
+
+    articles.forEach((article) => {
       if (
         article.title &&
         article.urlToImage &&
@@ -57,25 +54,26 @@ async function fetchNews(url) {
         article.url &&
         article.publishedAt
       ) {
-  const newsItem = document.createElement('div');
-  newsItem.innerHTML = `
-    <h3>${article.title}</h3>
-    <img src="${article.urlToImage}" class="news-image" />
-    <p>${article.description}</p>
-    <a href="${article.url}" target="_blank">Läs mer</a>
-    <hr>
-  `;
-  newsCont.appendChild(newsItem);
+        const newsItem = document.createElement("div");
+        newsItem.innerHTML = `<h3>${article.title}</h3>
+          <img src="${article.urlToImage}" class="news-image" />
+          <p>${article.description}</p>
+          <a href="${article.url}" target="_blank">Läs mer</a>
+          <hr>`;
+        newsCont.appendChild(newsItem);
+      }
+    });
   }
+
+  const displayNewsBtn1 = document.querySelector("#news-wrapper-0-btn");
+  const displayTopNewsBtn2 = document.querySelector("#news-wrapper-1-btn");
+  const displayTeslaNewsBtn3 = document.querySelector("#news-wrapper-2-btn");
+  const displayAppleNewsBtn4 = document.querySelector("#news-wrapper-3-btn");
+  const displayBusinessNewsBtn5 = document.querySelector("#news-wrapper-4-btn");
+
+  displayNewsBtn1.addEventListener("click", () => displayNewsByIndex(0));
+  displayTopNewsBtn2.addEventListener("click", () => displayNewsByIndex(1));
+  displayTeslaNewsBtn3.addEventListener("click", () => displayNewsByIndex(2));
+  displayAppleNewsBtn4.addEventListener("click", () => displayNewsByIndex(3));
+  displayBusinessNewsBtn5.addEventListener("click", () => displayNewsByIndex(4));
 });
-
-    } catch (error) {
-      console.log("Something went wrong: " + error);
-    }
-}
-
-fetchNews(url);	
-
-
-
-

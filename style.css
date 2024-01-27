@@ -228,7 +228,7 @@ p {
     justify-content: center;
     align-items: center;
   }
-  .toppnews-container {
+  .news-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -237,7 +237,7 @@ p {
     height: auto;
   }
 
-  .toppnews-container div {
+  .news-wrapper div {
     display: flex;
     flex-direction: column;
     justify-content: center;
