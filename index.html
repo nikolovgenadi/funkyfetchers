@@ -5,7 +5,8 @@
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script type="module" src="/main.js" defer></script>
-		<script type="module" src="/menu.js" defer></script>
+		<!-- <script type="module" src="/menu.js" defer></script> -->
+		<script type="module" src="containers.js" defer></script>
 		<link rel="stylesheet" href="style.css" />
 		<title>Vite App</title>
 	</head>
@@ -17,10 +18,11 @@
 				<div class="topbar-container">
 					<ul class="topbar-menu-items">
 						<li class="topbar-menu-item" id="menu-btn">Meny</li>
-						<li class="topbar-menu-item">{FunkyFetchers}</li>
-						<li class="topbar-menu-item">Toppnyheter</li>
-						<li class="topbar-menu-item">Senaste nytt</li>
-						<li class="topbar-menu-item">Bevakningar</li>
+						<li class="topbar-menu-item" id="news-wrapper-0-btn">{FunkyFetchers}</li>
+						<li class="topbar-menu-item" id="news-wrapper-1-btn">Toppnyheter</li>
+						<li class="topbar-menu-item" id="news-wrapper-2-btn">Senaste nytt</li>
+						<li class="topbar-menu-item" id="news-wrapper-3-btn">Bevakningar</li>
+						<li class="topbar-menu-item" id="news-wrapper-4-btn">Bevakningar</li>
 
 						<div class="search" id="search">
 							<input type="text" id="search-input" placeholder="Sök.." />
@@ -39,7 +41,14 @@
               <input type="text" id="mobile-search-input" placeholder="Sök.." />
             </div>
   
-          
+	
+    <main class="news-wrapper">
+		<section class="news-section" id="news-wrapper-0"></section>
+		<section class="news-section" id="news-wrapper-1"></section>
+		<section class="news-section" id="news-wrapper-2"></section>
+		<section class="news-section" id="news-wrapper-3"></section>
+		<section class="news-section" id="news-wrapper-4"></section>
+	</main>  
 
 					<div class="top-login-menu-right">
 						<div class="login">
@@ -62,12 +71,6 @@
 		</nav>
 
 <main>
-		<div class="section-container" id="section-container">
-			<section class="toppnews">
-				<p class="topp-title">Toppnyheter</p>
-				<div class="toppnews-container"></div>
-			</section>
-
 			<section class="lastnews hidden">
 				<p class="last-title">Senaste nytt</p>
 			</section>
