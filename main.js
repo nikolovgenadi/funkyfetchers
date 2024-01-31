@@ -4,15 +4,22 @@ document.addEventListener("DOMContentLoaded", async function () {
   let country = "Sweden";
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = String(currentDate.getDate().toString().padStart(2, '0'));
+
+  const theDate = `${year}-${month}-${day}`;
+  console.log(theDate);
+
   const categories = [
     "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=" + apiKey,
     "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey,
-    "https://newsapi.org/v2/everything?q=tesla&from=2023-12-26&sortBy=publishedAt&apiKey=" + apiKey,
-    "https://newsapi.org/v2/everything?q=apple&from=2024-01-25&to=2024-01-25&sortBy=popularity&apiKey=" + apiKey,
     "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" + apiKey,
   ];
-// fix the reset for each array
-  const dataObjects = {};
+
+  // fix the reset for each array
+  const dataObjects = Array.from({ length: categories.length }, () => []);
 
   for (let index = 0; index < categories.length; index++) {
     try {
@@ -20,17 +27,34 @@ document.addEventListener("DOMContentLoaded", async function () {
       const articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
+      // console.log(dataObjects[index]);
     } catch (error) {
       console.error(`Error fetching the data from ${categories[index]};`, error);
     }
   }
 
   function displayNewsByIndex(index) {
+    const newsContainers = ["news-wrapper-0", "news-wrapper-1", "news-wrapper-2", "news-wrapper-3", "news-wrapper-4"];
     const storedData = localStorage.getItem(`newsData_${index}`);
+    const newsCont = document.querySelector(`#news-wrapper-${index}`);
+
+    if (newsCont) {
+      newsCont.innerHTML = "";
+    } else {
+      console.error(`No data found for ${index}.`);
+      return;
+    }
 
     if (storedData) {
       const articles = JSON.parse(storedData);
       CreateArticlesInContainer(articles, index);
+
+      newsContainers.forEach((container, i) => {
+        const wrapper = document.getElementById(container);
+        if (wrapper) {
+          wrapper.style.display = i === index ? 'block' : 'none';
+        }
+      });
     } else {
       console.error(`No data found for ${index}.`);
     }
@@ -38,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function CreateArticlesInContainer(articles, index) {
     const newsCont = document.querySelector(`#news-wrapper-${index}`);
-
     if (!newsCont) {
       console.error(`Container not found for ${index}.`);
       return;
@@ -50,9 +73,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       if (
         article.title &&
         article.urlToImage &&
-        article.description &&
-        article.url &&
-        article.publishedAt
+        article.description
       ) {
         const newsItem = document.createElement("div");
         newsItem.innerHTML = `<h3>${article.title}</h3>
@@ -67,13 +88,20 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const displayNewsBtn1 = document.querySelector("#news-wrapper-0-btn");
   const displayTopNewsBtn2 = document.querySelector("#news-wrapper-1-btn");
-  const displayTeslaNewsBtn3 = document.querySelector("#news-wrapper-2-btn");
-  const displayAppleNewsBtn4 = document.querySelector("#news-wrapper-3-btn");
-  const displayBusinessNewsBtn5 = document.querySelector("#news-wrapper-4-btn");
+  const displayBusinessNewsBtn3 = document.querySelector("#news-wrapper-2-btn");
 
-  displayNewsBtn1.addEventListener("click", () => displayNewsByIndex(0));
-  displayTopNewsBtn2.addEventListener("click", () => displayNewsByIndex(1));
-  displayTeslaNewsBtn3.addEventListener("click", () => displayNewsByIndex(2));
-  displayAppleNewsBtn4.addEventListener("click", () => displayNewsByIndex(3));
-  displayBusinessNewsBtn5.addEventListener("click", () => displayNewsByIndex(4));
+  displayNewsBtn1.addEventListener("click", () => {
+    displayNewsByIndex(0);
+    console.log('all news button is clicked');
+  });
+
+  displayTopNewsBtn2.addEventListener("click", () => {
+    displayNewsByIndex(1);
+    console.log('top news button is clicked');
+  });
+
+  displayBusinessNewsBtn3.addEventListener("click", () => {
+    displayNewsByIndex(2);
+    console.log('business news button is clicked');
+  });
 });
