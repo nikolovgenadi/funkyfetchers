@@ -1,10 +1,13 @@
+// Koden börjar med att importera Axios-biblioteket för att göra HTTP-förfrågningar.
+// Den importerar också API-nyckeln från miljövariabler (Vite-miljövariabel).
 import axios from 'axios';
 const apiKey = import.meta.env.VITE_API_KEY;
 
+// Lagra original- och sorterade news articles
 let originalArray = [];
 let sortedArray = [];
-let isSorted = false;
 
+// Hämtar news articles API, den datan lagras i originalArray och en kopia görs i sortedArray. Informationen lagras också i localStorage.
 const fetchNews = async (apiKey) => {
 	try {
 		const response = await axios.get(
@@ -12,7 +15,7 @@ const fetchNews = async (apiKey) => {
 		);
 		originalArray = response.data.articles;
 		sortedArray = [...originalArray];
-		// OM inte localStorage används så används originalArray
+		// Om inte localStorage används så används originalArray
 		localStorage.setItem('newsData', JSON.stringify(response.data));
 	} catch (error) {
 		console.error('Error fetching data: ', error);
@@ -20,6 +23,7 @@ const fetchNews = async (apiKey) => {
 	}
 };
 
+// Anropar fetchNews och loggar ett meddelande om datan hämtas och uppdateras korrekt
 async function fetchAndUpdateData(apiKey) {
 	try {
 		await fetchNews(apiKey);
@@ -29,12 +33,7 @@ async function fetchAndUpdateData(apiKey) {
 	}
 }
 
-function sortByOldest(articles) {
-	return articles.sort((a, b) => {
-		return new Date(a.publishedAt) - new Date(b.publishedAt);
-	});
-}
-
+// När fönstret laddas anropar den fetchAndUpdateData och hämtar från localStorage. OM data finns renderar den ut News articles annars loggas ett meddelande.
 window.addEventListener('load', async () => {
 	await fetchAndUpdateData(apiKey);
 
@@ -47,32 +46,7 @@ window.addEventListener('load', async () => {
 		console.log('No data found in localstorage!');
 	}
 
-	// "Toggla" mellan senaste och äldsta nyheter
-	function toggleSortedArray() {
-		console.log('Toggle sorted function');
-		isSorted = !isSorted;
-		if (isSorted) {
-			sortedArray === sortByOldest(sortedArray);
-			toggleSortedButton.textContent = 'Senaste Nyheterna';
-		} else {
-			sortedArray = [...originalArray];
-			toggleSortedButton.textContent = 'Äldsta Nyheterna';
-		}
-		renderArticles(sortedArray);
-	}
-
-	// Visa senaste nyheter (original array)
-	function showLatestNews() {
-		sortedArray = [...originalArray];
-		toggleSortedButton.textContent = 'Äldsta Nyheterna';
-	}
-
-	// Visa äldsta nyheter
-	function showOldestNews() {
-		sortedArray === sortByOldest(sortedArray);
-		toggleSortedButton.textContent = 'Senaste Nyheterna';
-	}
-
+	// Tar en array av news articles och visar dem på hemsidan genom att skapa HTML-element dynamiskt.
 	function renderArticles(articles) {
 		console.log('RENDER: ', articles);
 		const newsContainer = document.querySelector('.toppnews-container');
@@ -90,15 +64,28 @@ window.addEventListener('load', async () => {
 		});
 	}
 
-	// Använd denna under för att "toggla" mellan senaste och äldsta nyheter
-	const toggleSortedButton = document.querySelector('#toggle-sorted-news');
-	toggleSortedButton.addEventListener('click', toggleSortedArray);
+	// Sorterar news articles baserat på deras publishedAt egenskap dvs. datum
+	function sortByOldest(articles) {
+		return articles.sort((a, b) => {
+			return new Date(a.publishedAt) - new Date(b.publishedAt);
+		});
+	}
 
-	// Använd dessa under för två knappar, en för senaste nyheter och en för äldsta.
+	const showOldNewsButton = document.getElementById('show-oldest-news');
+	showOldNewsButton.addEventListener('click', showOldestNews);
 
-	// const showLatestNewsButton = document.querySelector('#latest-news-button');
-	// showLatestNewsButton.addEventListener('click', showLatestNews);
+	// sorterar sortedArray genom att anropa showByOldest och renderar sedan news articles (Visa äldsta nyheter).
+	function showOldestNews() {
+		sortedArray = sortByOldest(sortedArray);
+		renderArticles(sortedArray);
+	}
 
-	// const showOldestNewsButton = document.querySelector('#oldest-news-button');
-	// showOldestNewsButton.addEventListener('click', showOldestNews);
+	const showLatestNewsButton = document.getElementById('show-latest-news');
+	showLatestNewsButton.addEventListener('click', showLatestNews);
+
+	// Återställer sortedArray till originalArray och renderar news articles (Visa senaste nyheter (original array)).
+	function showLatestNews() {
+		sortedArray = [...originalArray];
+		renderArticles(sortedArray);
+	}
 });
