@@ -2,15 +2,15 @@ import axios from "axios";
 
 document.addEventListener("DOMContentLoaded", async function () {
   let country = "Sweden";
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = import.meta.env.VITE_apiKey;
 
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).toString().padStart(2, '0');
-  const day = String(currentDate.getDate().toString().padStart(2, '0'));
+  // const currentDate = new Date();
+  // const year = currentDate.getFullYear();
+  // const month = String(currentDate.getMonth() + 1).toString().padStart(2, '0');
+  // const day = String(currentDate.getDate().toString().padStart(2, '0'));
 
-  const theDate = `${year}-${month}-${day}`;
-  console.log(theDate);
+  // const theDate = `${year}-${month}-${day}`;
+  // console.log(theDate);
 
   const categories = [
     "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=" + apiKey,

@@ -1,5 +1,5 @@
 // Sidebar Toggle
-const menuButtons = document.querySelectorAll('.menu-btn');
+const menuButtons = document.querySelectorAll('#menu-btn');
 
 menuButtons.forEach((button) =>{
 	button.addEventListener('click', function () {
