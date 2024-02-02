@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MR0Y7P1DP9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MR0Y7P1DP9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-MR0Y7P1DP9');
-</script>
+        gtag('config', 'G-MR0Y7P1DP9');
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <!-- Andra länkar och stilar här -->
@@ -24,105 +24,98 @@
     <link rel="stylesheet" href="style.css" />
     
     <!-- SEO Meta Tags -->
-   <!-- SEO Meta Tags -->
-<meta name="description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
-<meta name="keywords" content="Nyhet, Topphändelser, Senaste nytt, Tech, Innovation, FunkyFetchers">
-<meta name="author" content="FunkyFetchers">
+    <meta name="description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+    <meta name="keywords" content="Nyhet, Topphändelser, Senaste nytt, Tech, Innovation, FunkyFetchers">
+    <meta name="author" content="FunkyFetchers">
 
-<!-- Open Graph meta tags för delning på sociala medier -->
-<meta property="og:title" content="FunkyFetchers - Din nyhetssida">
-<meta property="og:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
-<meta property="og:image" content="Länk till en bild för delning">
-<meta property="og:url" content="www.github.com/nikolovgenadi/funkyfetchers">
+    <!-- Open Graph meta tags för delning på sociala medier -->
+    <meta property="og:title" content="FunkyFetchers - Din nyhetssida">
+    <meta property="og:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+    <meta property="og:image" content="Länk till en bild för delning">
+    <meta property="og:url" content="www.github.com/nikolovgenadi/funkyfetchers">
 
-<!-- Twitter Card meta tags för delning på Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@FunkyFetchers">
-<meta name="twitter:title" content="FunkyFetchers - Din nyhetssida">
-<meta name="twitter:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
-<meta name="twitter:image" content="Länk till en bild för delning">
-
+    <!-- Twitter Card meta tags för delning på Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FunkyFetchers">
+    <meta name="twitter:title" content="FunkyFetchers - Din nyhetssida">
+    <meta name="twitter:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+    <meta name="twitter:image" content="Länk till en bild för delning">
 
     <title>Vite App</title>
 </head>
+<body>
+    <!-- Top Nav Menu -->
+    <header>
+        <nav class="topbar">
+            <div class="topbar-container">
+                <ul class="topbar-menu-items">
+                    <li class="topbar-menu-item" id="menu-btn">Meny</li>
+                    <li class="topbar-menu-item">{FunkyFetchers}</li>
+                    <li class="topbar-menu-item">Toppnyheter</li>
+                    <li class="topbar-menu-item">Senaste nytt</li>
+                    <li class="topbar-menu-item">Bevakningar</li>
 
+                    <div class="search" id="search">
+                        <input type="text" id="search-input" placeholder="Sök.." />
+                    </div>
+                </ul>
 
-
-	<body>
-		<!-- Top Nav Menu -->
-		<header>
-			<nav class="topbar">
-				<div class="topbar-container">
-					<ul class="topbar-menu-items">
-						<li class="topbar-menu-item" id="menu-btn">Meny</li>
-						<li class="topbar-menu-item">{FunkyFetchers}</li>
-						<li class="topbar-menu-item">Toppnyheter</li>
-						<li class="topbar-menu-item">Senaste nytt</li>
-						<li class="topbar-menu-item">Bevakningar</li>
-
-						<div class="search" id="search">
-							<input type="text" id="search-input" placeholder="Sök.." />
-						</div>
-					</ul>
-        </div>
-
-          <div class="mobile-topbar-container">
-            <ul class="mobile-topbar-menu-items">
-              <li class="mobile-topbar-menu-item menu-btn">Meny</li>
-              <li class="mobile-topbar-menu-item">Toppnyheter</li>
-              <li class="mobile-topbar-menu-item">Senaste</li>
-            </ul>
-          </div>
-            <div class="mobile-search" id="search">
-              <input type="text" id="mobile-search-input" placeholder="Sök.." />
+                <div class="top-login-menu-right">
+                    <div class="login">
+                        <button id="login"><a href="signin.html"><i class="fa fa-user"></i> Logga in</a></button>
+                    </div>
+                </div>
             </div>
-  
-          
 
-					<div class="top-login-menu-right">
-						<div class="login">
-							<button id="login"><a href="signin.html">Logga in</a></button>
+            <div class="mobile-topbar-container">
+                <ul class="mobile-topbar-menu-items">
+                    <li class="mobile-topbar-menu-item menu-btn">Meny</li>
+                    <li class="mobile-topbar-menu-item">Toppnyheter</li>
+                    <li class="mobile-topbar-menu-item">Senaste</li>
+                </ul>
+            </div>
 
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
+            <div class="mobile-search" id="search">
+                <input type="text" id="mobile-search-input" placeholder="Sök.." />
+            </div>
+        </nav>
+    </header>
 
-		<!-- Sidebar Menu -->
-		<nav class="sidebar" id="sidebar">
-			<ul>
-				<li>Sidebar Item 1</li>
-				<li>Sidebar Item 2</li>
-				<li>Sidebar Item 3</li>
-				<li>Sidebar Item 4</li>
-			</ul>
-		</nav>
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>Sidebar Item 1</li>
+            <li>Sidebar Item 2</li>
+            <li>Sidebar Item 3</li>
+            <li>Sidebar Item 4</li>
+        </ul>
+    </nav>
 
-<main>
-		<div class="section-container" id="section-container">
-			<section class="toppnews">
-				<p class="topp-title">Toppnyheter</p>
-				<div class="toppnews-container"></div>
-			</section>
+    <main>
+        <div class="section-container" id="section-container">
+            <section class="toppnews">
+                <p class="topp-title">Toppnyheter</p>
+                <div class="toppnews-container"></div>
+            </section>
 
-			<section class="lastnews hidden">
-				<p class="last-title">Senaste nytt</p>
-			</section>
-		</div>
-  </main>
+            <section class="lastnews hidden">
+                <p class="last-title">Senaste nytt</p>
+            </section>
+        </div>
+    </main>
 
-		<footer class="foot">
-			<ul class="foot-menu-buttons">
-				<li class="foot-menu-btn">Nyheter</li>
-				<li class="foot-menu-btn">Ekonomi</li>
-				<li class="foot-menu-btn">Nyheter</li>
-				<li class="foot-menu-btn">Bevackningar</li>
-				<li class="foot-menu-btn">Upptäck</li>
-				<li class="foot-menu-btn"><a href="signin.html">Mitt konto</a></li>
-			</ul>
+    <footer class="foot">
+        <ul class="foot-menu-buttons">
+            <li class="foot-menu-btn">Nyheter</li>
+            <li class="foot-menu-btn">Ekonomi</li>
+            <li class="foot-menu-btn">Nyheter</li>
+            <li class="foot-menu-btn">Bevackningar</li>
+            <li class="foot-menu-btn">Upptäck</li>
+            <li class="foot-menu-btn"><a href="signin.html"><i class="fa fa-user"></i> Mitt konto</a></li>
+        </ul>
 
-			<p>&copy; 2024 Vite App. Alla rättigheter förbehållna.</p>	
-		</footer>
-	</body>
+        <p>&copy; 2024 Vite App. Alla rättigheter förbehållna.</p>   
+    </footer>
+</body>
 </html>
+
