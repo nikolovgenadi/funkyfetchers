@@ -1,91 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script type="module" src="/main.js" defer></script>
-		<!-- <script type="module" src="/menu.js" defer></script> -->
-		<script type="module" src="containers.js" defer></script>
-		<link rel="stylesheet" href="style.css" />
-		<title>Vite App</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="css/style.css" defer /> -->
+    <link rel="stylesheet" href="css/phone.css" defer />
+    <link rel="stylesheet" href="css/tablet.css" defer />
+	<link rel="stylesheet" href="css/desktop.css" defer />
+    <title>FF NEWS</title>
+  </head>
 
-	<body>
-		<!-- Top Nav Menu -->
-		<header>
-			<nav class="topbar">
-				<div class="topbar-container">
-					<ul class="topbar-menu-items">
-						<li class="topbar-menu-item" id="menu-btn">Meny</li>
-						<li class="topbar-menu-item" id="news-wrapper-0-btn">{FunkyFetchers}</li>
-						<li class="topbar-menu-item" id="news-wrapper-1-btn">Toppnyheter</li>
-						<li class="topbar-menu-item" id="news-wrapper-2-btn">Senaste nytt</li>
-						<li class="topbar-menu-item" id="news-wrapper-3-btn">Bevakningar</li>
-						<li class="topbar-menu-item" id="news-wrapper-4-btn">Bevakningar</li>
-
-						<div class="search" id="search">
-							<input type="text" id="search-input" placeholder="Sök.." />
-						</div>
-					</ul>
+  <body>
+    <!-- Top Nav Menu -->
+    <main class="main-wrapper">
+      <header>
+        <div class="site-logo" id="nav-logo">
+          FF News
+          <!-- <img src="site-logo" alt="Website logo" /> -->
         </div>
+        <nav class="recent-oldest">
+          <div class="recent" id="recent-news-btn">Recent</div>
+          <div class="oldest" id="oldest-news-btn">Oldest</div>
+        </nav>
 
-          <div class="mobile-topbar-container">
-            <ul class="mobile-topbar-menu-items">
-              <li class="mobile-topbar-menu-item menu-btn">Meny</li>
-              <li class="mobile-topbar-menu-item">Toppnyheter</li>
-              <li class="mobile-topbar-menu-item">Senaste</li>
+        <nav class="topbar">
+          <div class="topbar-container">
+            <ul class="topbar-menu-items">
+              <li class="topbar-menu-item" id="news-wrapper-0-btn">All news</li>
+              <li class="topbar-menu-item" id="news-wrapper-1-btn">Top news</li>
+              <li class="topbar-menu-item" id="news-wrapper-2-btn">Business news</li>
+              <li class="topbar-menu-item" id="news-wrapper-3-btn">Latest news</li>
+              <li class="topbar-menu-item" id="news-wrapper-4-btn">Favourites</li>
+              <div class="search" id="search">
+                <input type="text" id="search-input" placeholder="Search..." />
+              </div>
+			  <div class="login">
+				<button id="login"><a href="signin.html">Log in</a></button>
+			  </div>
             </ul>
           </div>
-            <div class="mobile-search" id="search">
-              <input type="text" id="mobile-search-input" placeholder="Sök.." />
-            </div>
-  
-	
-    <main class="news-wrapper">
-		<section class="news-section" id="news-wrapper-0"></section>
-		<section class="news-section" id="news-wrapper-1"></section>
-		<section class="news-section" id="news-wrapper-2"></section>
-		<section class="news-section" id="news-wrapper-3"></section>
-		<section class="news-section" id="news-wrapper-4"></section>
-	</main>  
+        </nav>
+      </header>
+      <!-- Sidebar Menu -->
+      <nav class="sidebar" id="sidebar">
+        <ul>
+          <li>Sidebar</li>
+          <li>Sidebar</li>
+        </ul>
+      </nav>
+<!-- news wrapper -->
+      <section class="news-wrapper" id="news-wrapper">
+        <section class="news-section" id="news-wrapper-0"></section>
+        <section class="news-section" id="news-wrapper-1"></section>
+        <section class="news-section" id="news-wrapper-2"></section>
+      </section>
 
-					<div class="top-login-menu-right">
-						<div class="login">
-							<button id="login"><a href="signin.html">Logga in</a></button>
-
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
-
-		<!-- Sidebar Menu -->
-		<nav class="sidebar" id="sidebar">
-			<ul>
-				<li>Sidebar Item 1</li>
-				<li>Sidebar Item 2</li>
-				<li>Sidebar Item 3</li>
-				<li>Sidebar Item 4</li>
-			</ul>
-		</nav>
-
-<main>
-			<section class="lastnews hidden">
-				<p class="last-title">Senaste nytt</p>
-			</section>
-		</div>
-  </main>
-
-		<footer class="foot">
-			<ul class="foot-menu-buttons">
-				<li class="foot-menu-btn">Nyheter</li>
-				<li class="foot-menu-btn">Ekonomi</li>
-				<li class="foot-menu-btn">Nyheter</li>
-				<li class="foot-menu-btn">Bevackningar</li>
-				<li class="foot-menu-btn">Upptäck</li>
-				<li class="foot-menu-btn"><a href="signin.html">Mitt konto</a></li>
-			</ul>
-		</footer>
-	</body>
+      <nav class="mobile-nav" id="menu-btn">Meny</nav>
+<!-- phone footer menu -->
+      <footer class="footer-menu">
+        <ul class="footer-menu-buttons">
+          <li class="footer-menu-btn" id="news-wrapper-0-btn">All news</li>
+          <li class="footer-menu-btn" id="news-wrapper-1-btn">Top news</li>
+          <li class="footer-menu-btn" id="news-wrapper-2-btn">Business news</li>
+          <li class="footer-menu-btn" id="news-wrapper-3-btn">fav</li>
+          <li class="footer-menu-btn"><a href="signin.html">Sign in</a></li>
+        </ul>
+      </footer>
+      <script type="module" src="/main.js" defer></script>
+      <script type="module" src="/menu.js" defer></script>
+    </main>
+  </body>
 </html>
