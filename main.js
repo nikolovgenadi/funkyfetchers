@@ -76,11 +76,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         article.description
       ) {
         const newsItem = document.createElement("div");
-        newsItem.innerHTML = `<h3>${article.title}</h3>
-          <img src="${article.urlToImage}" class="news-image" />
+        newsItem.innerHTML = 
+          `<img src="${article.urlToImage}" class="news-image" />
+          <h3>${article.title}</h3>
           <p>${article.description}</p>
-          <a href="${article.url}" target="_blank">Läs mer</a>
-          <hr>`;
+          <a href="${article.url}" target="_blank">Visit the webpage</a>`;
         newsCont.appendChild(newsItem);
       }
     });
