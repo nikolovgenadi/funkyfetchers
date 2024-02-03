@@ -1,5 +1,7 @@
 import axios from "axios";
 
+let articles = null
+
 document.addEventListener("DOMContentLoaded", async function () {
   let country = "Sweden";
   const apiKey = import.meta.env.VITE_apiKey;
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   for (let index = 0; index < categories.length; index++) {
     try {
       const response = await axios.get(categories[index]);
-      const articles = response.data.articles;
+      articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
       // console.log(dataObjects[index]);
@@ -78,9 +80,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         const newsItem = document.createElement("div");
         newsItem.innerHTML = 
           `<img src="${article.urlToImage}" class="news-image" />
-          <h3>${article.title}</h3>
+          <h3 class="articleTitle">${article.title}</h3>
           <p>${article.description}</p>
-          <a href="${article.url}" target="_blank">Visit the webpage</a>`;
+          <a href="${article.url}" target="_blank">Visit the webpage</a>
+          <i class="fa-solid fa-star fav-btn"></i>`;
         newsCont.appendChild(newsItem);
       }
     });
@@ -105,3 +108,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log('business news button is clicked');
   });
 });
+
+export { articles };
