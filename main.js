@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let articles = null
+let globalArticles = [];
 
 document.addEventListener("DOMContentLoaded", async function () {
   let country = "Sweden";
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
+      globalArticles.push(...response.data.articles);
       // console.log(dataObjects[index]);
     } catch (error) {
       console.error(`Error fetching the data from ${categories[index]};`, error);
@@ -109,4 +110,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
-export { articles };
+function getArticles() {
+  return globalArticles;
+}
+
+export { getArticles };
