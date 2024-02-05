@@ -18,6 +18,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" + apiKey,
   ];
 
+  function displayAllNewsOnLoad() {
+    displayNewsByIndex(0);
+    console.log('Load all news on page load.');
+  }
+
   // fix the reset for each array
   const dataObjects = Array.from({ length: categories.length }, () => []);
 
@@ -27,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
+      displayAllNewsOnLoad();
       // console.log(dataObjects[index]);
     } catch (error) {
       console.error(`Error fetching the data from ${categories[index]};`, error);
