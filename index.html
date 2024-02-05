@@ -1,63 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="css/style.css" defer /> -->
-    <link rel="stylesheet" href="css/phone.css" defer />
-    <link rel="stylesheet" href="css/tablet.css" defer />
-	<link rel="stylesheet" href="css/desktop.css" defer />
-    <title>FF NEWS</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="stylesheet" href="css/style.css" defer /> -->
+		<link rel="stylesheet" href="css/phone.css" defer />
+		<link rel="stylesheet" href="css/tablet.css" defer />
+		<link rel="stylesheet" href="css/desktop.css" defer />
+		<title>FF NEWS</title>
+	</head>
 
-  <body>
-    <!-- Top Nav Menu -->
-    <main class="main-wrapper">
-      <header>
-        <div class="site-logo" id="nav-logo">
-          FF News
-          <!-- <img src="site-logo" alt="Website logo" /> -->
-        </div>
-        <nav class="recent-oldest">
-          <div class="recent" id="recent-news-btn">Recent</div>
-          <div class="oldest" id="oldest-news-btn">Oldest</div>
-        </nav>
+	<body>
+		<!-- Top Nav Menu -->
+		<main class="main-wrapper">
+			<header>
+				<div class="site-logo" id="nav-logo">
+					FF News
+					<!-- <img src="site-logo" alt="Website logo" /> -->
+				</div>
+				<nav class="recent-oldest">
+					<div class="recent" id="recent-news-btn">Recent</div>
+					<div class="oldest" id="oldest-news-btn">Oldest</div>
+				</nav>
 
-        <nav class="topbar"> 
-          <div class="topbar-container"> 
-            <ul class="topbar-menu-items"> 
-              <li class="topbar-menu-item" id="news-wrapper-0-btn">All news</li>
-              <li class="topbar-menu-item" id="news-wrapper-1-btn">Top news</li>
-              <li class="topbar-menu-item" id="news-wrapper-2-btn">Business news</li>
-              <li class="topbar-menu-item" id="news-wrapper-4-btn">Fav</li>
-			  <div class="login">
-				<button id="login"><a href="signin.html">Log in</a></button>
-			  </div>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Sidebar Menu -->
-      <nav class="sidebar" id="sidebar">
-        <ul>
-          <li>Sidebar</li>
-          <li>Sidebar</li>
-        </ul>
-      </nav>
-<!-- news wrapper -->
-      <section class="news-wrapper" id="news-wrapper">
-        <section class="news-section" id="news-wrapper-0"></section>
-        <section class="news-section" id="news-wrapper-1"></section>
-        <section class="news-section" id="news-wrapper-2"></section>
-      </section>
-      
-      <div class="search" id="search">
-        <input type="text" id="search-input" placeholder="Search..." />
-      </div>
-      <nav class="mobile-nav" id="menu-btn">Meny</nav>
-<!-- phone footer menu -->
-      <!-- <footer class="footer-menu">
+				<nav class="topbar">
+					<div class="topbar-container">
+						<ul class="topbar-menu-items">
+							<li class="topbar-menu-item" id="news-wrapper-0-btn">All news</li>
+							<li class="topbar-menu-item" id="news-wrapper-1-btn">Top news</li>
+
+							<li class="topbar-menu-item" id="news-wrapper-2-btn">
+								Business news
+							</li>
+							<li class="topbar-menu-item" id="news-wrapper-4-btn">Fav</li>
+							<div class="login">
+								<li class="topbar-menu-item" id="news-wrapper-5-btn">
+									<button id="sort-newest-btn">Sort by Newest</button>
+								</li>
+								<li class="topbar-menu-item" id="news-wrapper-6-btn">
+									<button id="sort-oldest-btn">Sort by Oldest</button>
+								</li>
+								<button id="login"><a href="signin.html">Log in</a></button>
+							</div>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- Sidebar Menu -->
+			<nav class="sidebar" id="sidebar">
+				<ul>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+				</ul>
+			</nav>
+			<!-- news wrapper -->
+			<section class="news-wrapper" id="news-wrapper">
+				<section class="news-section" id="news-wrapper-0"></section>
+				<section class="news-section" id="news-wrapper-1"></section>
+				<section class="news-section" id="news-wrapper-2"></section>
+			</section>
+
+			<div class="search" id="search">
+				<input type="text" id="search-input" placeholder="Search..." />
+			</div>
+			<nav class="mobile-nav" id="menu-btn">Meny</nav>
+			<!-- phone footer menu -->
+			<!-- <footer class="footer-menu">
         <ul class="footer-menu-buttons">
           <li class="footer-menu-btn" id="news-wrapper-0-btn">All news</li>
           <li class="footer-menu-btn" id="news-wrapper-1-btn">Top news</li>
@@ -66,8 +75,8 @@
           <li class="footer-menu-btn"><a href="signin.html">Sign in</a></li>
         </ul>
       </footer> -->
-      <script type="module" src="/main.js" defer></script>
-      <script type="module" src="/menu.js" defer></script>
-    </main>
-  </body>
+			<script type="module" src="/main.js" defer></script>
+			<script type="module" src="/menu.js" defer></script>
+		</main>
+	</body>
 </html>
