@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   for (let index = 0; index < categories.length; index++) {
     try {
       const response = await axios.get(categories[index]);
-      articles = response.data.articles;
+      const articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
       globalArticles.push(...response.data.articles);
@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       ) {
         const newsItem = document.createElement("div");
         newsItem.innerHTML = 
-          `<img src="${article.urlToImage}" class="news-image" />
-          <h3 class="articleTitle">${article.title}</h3>
-          <p>${article.description}</p>
-          <a href="${article.url}" target="_blank">Visit the webpage</a>
-          <i class="fa-solid fa-star fav-btn"></i>`;
+          `<div>
+            <img src="${article.urlToImage}" class="news-image" />
+            <h3 class="articleTitle">${article.title}</h3>
+            <p>${article.description}</p>
+            <a href="${article.url}" target="_blank">Visit the webpage</a>
+            <i class="fa-solid fa-star fav-btn"></i>
+          </div>`;
         newsCont.appendChild(newsItem);
       }
     });
@@ -110,8 +112,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
-function getArticles() {
+export function getArticles() {
   return globalArticles;
 }
-
-export { getArticles };
