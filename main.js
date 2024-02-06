@@ -90,6 +90,14 @@ document.addEventListener('DOMContentLoaded', async function () {
           <a href="${article.url}" target="_blank">Visit the webpage</a>
           <i class="fa-solid fa-star fav-btn"></i>`;
 				newsCont.appendChild(newsItem);
+
+        const isFavourite = favouriteArticles.some(a => a.title === article.title);
+        const favBtn = newsItem.querySelector('.fav-btn');
+        if (isFavourite) {
+            favBtn.style.color = "#FFBF00";
+        } else {
+            favBtn.style.color = "#FFFFFF";
+        }
 			}
 		});
 	}
@@ -179,6 +187,7 @@ function newFav(event) {
         const article = globalArticles.flat().find(a => a.title === articleTitle);
 
         if (article) {
+            // Checks if favouriteArticles already contains an article with the same title as the one pressed
             const isFavourite = favouriteArticles.some(a => a.title === articleTitle);
             if (isFavourite) {
                 // Remove from favorites
