@@ -4,7 +4,7 @@ let globalArticles = [];
 
 document.addEventListener("DOMContentLoaded", async function () {
   let country = "Sweden";
-  const apiKey = import.meta.env.VITE_apiKey;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   // const currentDate = new Date();
   // const year = currentDate.getFullYear();
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const articles = response.data.articles;
       dataObjects[index] = articles;
       localStorage.setItem(`newsData_${index}`, JSON.stringify(dataObjects[index]));
-      globalArticles.push(...response.data.articles);
+      globalArticles.push(articles);
       // console.log(dataObjects[index]);
     } catch (error) {
       console.error(`Error fetching the data from ${categories[index]};`, error);
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  function CreateArticlesInContainer(articles, index) {
+function CreateArticlesInContainer(articles, index) {
     const newsCont = document.querySelector(`#news-wrapper-${index}`);
     if (!newsCont) {
       console.error(`Container not found for ${index}.`);
@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const displayNewsBtn1 = document.querySelector("#news-wrapper-0-btn");
   const displayTopNewsBtn2 = document.querySelector("#news-wrapper-1-btn");
   const displayBusinessNewsBtn3 = document.querySelector("#news-wrapper-2-btn");
+  const displayFavouritesBtn = document.querySelector("#news-wrapper-4-btn")
 
   displayNewsBtn1.addEventListener("click", () => {
     displayNewsByIndex(0);
@@ -104,14 +105,44 @@ document.addEventListener("DOMContentLoaded", async function () {
   displayTopNewsBtn2.addEventListener("click", () => {
     displayNewsByIndex(1);
     console.log('top news button is clicked');
+    console.log(globalArticles)
   });
 
   displayBusinessNewsBtn3.addEventListener("click", () => {
     displayNewsByIndex(2);
     console.log('business news button is clicked');
   });
+
+  displayFavouritesBtn.addEventListener("click", () => {
+    displayNewsByIndex(4);
+    console.log('favourite container');
+  });
 });
 
-export function getArticles() {
-  return globalArticles;
+const mainWrapper = document.querySelector('.main-wrapper');
+let favouriteArticles = [];
+
+function newFav(event) {
+  if (event.target.classList.contains('fav-btn')) {
+    if (event.target.style.color == "#FFBF00") {
+      event.target.style.color = "#FFFFFF";
+    } else {
+      event.target.style.color = "#FFBF00";
+      const newsItem = event.target.closest('div');
+      const articleTitleElement = newsItem.querySelector('.articleTitle');
+      const articleTitle = articleTitleElement ? articleTitleElement.textContent.trim() : '';
+  
+      const article = globalArticles.find(a => a.title === articleTitle);
+      if (article && !favouriteArticles.find(a => a.title === article.title)) {
+        favouriteArticles.push(article);
+        console.log('Article added to favorites:', article.title);
+      } else if (!article) {
+        console.log("Article not found", articleTitle);
+      } else {
+        console.log("Article already in favorites");
+      }
+    }
+  }
 }
+
+mainWrapper.addEventListener('click' , newFav)
