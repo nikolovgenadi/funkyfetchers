@@ -132,6 +132,7 @@ p {
 .parat-2 a {
   color: #49c1a2;
 }
+
 /* slut för style in/ut */
 @media (max-width: 768px) {
   header {
