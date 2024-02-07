@@ -1,4 +1,4 @@
-// Sidebar Toggle
+/* // Sidebar Toggle
 const menuButtons = document.querySelectorAll('#menu-btn');
 
 menuButtons.forEach((button) =>{
@@ -23,3 +23,4 @@ newsContainer.addEventListener('click', function () {
 // searchInput.addEventListener('click', function () {
 // 	searchInput.value = ''
 // })
+ */
