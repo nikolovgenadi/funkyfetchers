@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 		const newsContainers = [
 			'news-wrapper-0',
 			'news-wrapper-1',
-			'news-wrapper-2',
-			'news-wrapper-3'
+			'news-wrapper-2'
 		];
 		const storedData = localStorage.getItem(`newsData_${index}`);
 		const newsCont = document.querySelector(`#news-wrapper-${index}`);
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 			return;
 		}
 
-		if (storedData || favouriteArticles) {
+		if (storedData) {
 			const articles = JSON.parse(storedData);
 			//
 			CreateArticlesInContainer(articles, index);
@@ -128,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 	});
 
 	//Andys kod
-	/* 	let currentDisplayIndex = 0;
+		let currentDisplayIndex = 0;
 	
 		const sortNewestBtn = document.querySelector('#sort-newest-btn');
 		const sortOldestBtn = document.querySelector('#sort-oldest-btn');
@@ -166,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 			} else {
 				console.error(`No data found for ${currentDisplayIndex}.`);
 			}
-		} */
+		}
 
 
 	function updateFavouriteArticlesStorage() {
@@ -206,19 +205,38 @@ document.addEventListener('DOMContentLoaded', async function () {
 	function displayFavourite() {
 		const favContainer = document.querySelector(`#news-wrapper-3`);
 		console.log(favouriteArticles)
+		let newsItem = "";
 		favouriteArticles.forEach((article) => {
 			if (article.title && article.urlToImage && article.description) {
-				const newsItem = document.createElement('div');
-				newsItem.innerHTML = `<img src="${article.urlToImage}" class="news-image" />
-	  		<h3>${article.title}</h3>
-	  		<p>${article.description}</p>
-	  		<a href="${article.url}" target="_blank">Visit the webpage</a>
-	  		<i class="fa-solid fa-star fav-btn"></i>`;
-				favContainer.innerHTML = newsItem;
+				newsItem += 
+				`<div>
+				<img src="${article.urlToImage}" class="news-image" />
+	  			<h3>${article.title}</h3>
+	  			<p>${article.description}</p>
+	  			<a href="${article.url}" target="_blank">Visit the webpage</a>
+	  			<i class="fa-solid fa-star fav-btn"></i>
+			  	</div>`;
 			}
+/* 			const isFavourite = favouriteArticles.some(a => a.title === article.title);
+			const favBtn = newsItem.querySelector('.fav-btn');
+			favBtn.style.color = "#FFBF00"; */
 		})
-		displayNewsByIndex(3);
+		favContainer.innerHTML = newsItem;
+		displayFavContainer();
 	}
+
+	function displayFavContainer() {
+		const news0 = document.querySelector(`#news-wrapper-0`);
+		const news1 = document.querySelector(`#news-wrapper-1`);
+		const news2 = document.querySelector(`#news-wrapper-2`);
+		const favContainer = document.querySelector(`#news-wrapper-3`);
+		news0.style.display = "none";
+		news1.style.display = "none";
+		news2.style.display = "none";
+		favContainer.style.display = "block"
+
+	}
+
 
 	mainWrapper.addEventListener('click', newFav);
 });
