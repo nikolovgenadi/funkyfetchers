@@ -40,6 +40,7 @@
       top: 0;
       position: fixed;
       z-index: 15;
+      margin-bottom: 55px;
     }
   
     /* MOBILE TOGGLE MENU  */
@@ -221,3 +222,28 @@
 	background: none;
 	color: #ffff;
   }
+
+  
+/* Nataliias komplettering -----------------------*/
+
+.news-title {
+  color: rgb(205, 255, 255);
+}
+.news-desc {
+  color: white;
+}
+.news-date {
+  color: #72a4ff;
+}
+.news-author {
+  color: #ffe998;
+}
+.news-item {
+  border: 2px solid rgb(255, 255, 255);
+}
+mark {
+  background-color: aqua;
+}
+.news-item.hidden {
+  display: none;
+}

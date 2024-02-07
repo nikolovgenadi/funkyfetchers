@@ -84,9 +84,13 @@ document.addEventListener('DOMContentLoaded', async function () {
 		articles.forEach((article) => {
 			if (article.title && article.urlToImage && article.description) {
 				const newsItem = document.createElement('div');
-				newsItem.innerHTML = `<img src="${article.urlToImage}" class="news-image" />
-          <h3>${article.title}</h3>
-          <p>${article.description}</p>
+				newsItem.classList.add("news-item");
+				newsItem.innerHTML = `
+          <h3 class="news-title">${article.title}</h3>
+		  <img src="${article.urlToImage}" class="news-image" />
+          <p class="news-desc">${article.description}</p>
+		  <p class="news-author">${article.author}</p>
+		  <p class="news-date">${article.publishedAt}</p>
           <a href="${article.url}" target="_blank">Visit the webpage</a>`;
 				newsCont.appendChild(newsItem);
 			}
@@ -152,4 +156,74 @@ document.addEventListener('DOMContentLoaded', async function () {
 			console.error(`No data found for ${currentDisplayIndex}.`);
 		}
 	}
+
+
+
+	//Nataliias kod - Filtrering med keyword/author name/date/
+
+function filterArticles () {
+	
+	const searchInput = document.getElementById('search-input');
+	const filterInput = searchInput.value.trim().toLowerCase();
+	const newsCont = document.querySelector(`#news-wrapper-0`);
+	const articles = document.querySelectorAll(".news-item");
+  
+  articles.forEach(article => {
+	const titleText = article.querySelector('.news-title').textContent.toLowerCase();
+	const authorText = article.querySelector('.news-author').textContent.toLowerCase();
+	const descText = article.querySelector('.news-desc').textContent.toLowerCase();
+	const dateText = article.querySelector('.news-date').textContent;
+  
+	if (filterInput === '') {
+	  removeHighlight(titleElement);
+	  removeHighlight(authorElement);
+	  removeHighlight(descElement);
+	  removeHighlight(dateElement);
+	  return;
+	}
+  
+	const titleElement = article.querySelector('.news-title');
+	  const authorElement = article.querySelector('.news-author');
+	  const descElement = article.querySelector('.news-desc');
+	  const dateElement = article.querySelector('.news-date');
+  
+  
+  removeHighlight(titleElement);
+  removeHighlight(authorElement);
+  removeHighlight(descElement);
+  removeHighlight(dateElement);
+  
+  if (titleText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(titleElement, filterInput);
+  } else if (authorText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(authorElement, filterInput);
+  } else if (descText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(descElement, filterInput);
+	 } else if (dateText.includes(filterInput)) {
+		article.classList.remove('hidden');
+		highlightMatch(dateElement, filterInput);
+  } else {
+	article.classList.add('hidden');
+  }
+  });
+  }
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', filterArticles);
+  
+  function highlightMatch(element, filterInput) {
+	const innerHTML = element.innerHTML;
+	const index = innerHTML.toLowerCase().indexOf(filterInput);
+	const markedText = innerHTML.slice(0, index) + '<mark>' + innerHTML.slice(index, index + filterInput.length) + '</mark>' +
+	 innerHTML.slice(index + filterInput.length);
+	element.innerHTML = markedText;
+  }
+  function removeHighlight(element) {
+	element.innerHTML = element.textContent;
+	//element.innerHTML = "";
+  }
 });
+
+
