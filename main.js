@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axios from 'axios';
 
 document.addEventListener('DOMContentLoaded', async function () {
 	const apiKey = import.meta.env.VITE_apiKey;
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 		console.log('Load all news on page load.');
 	}
 
+	// fix the reset for each array
+	const dataObjects = Array.from({ length: categories.length }, () => []);
 	// fix the reset for each array
 	const dataObjects = Array.from({ length: categories.length }, () => []);
 
@@ -53,7 +56,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 			console.error(`No data found for ${index}.`);
 			return;
 		}
+		if (newsCont) {
+			newsCont.innerHTML = '';
+		} else {
+			console.error(`No data found for ${index}.`);
+			return;
+		}
 
+		if (storedData) {
+			const articles = JSON.parse(storedData);
+			//
+			CreateArticlesInContainer(articles, index);
 		if (storedData) {
 			const articles = JSON.parse(storedData);
 			//
@@ -71,6 +84,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 		
 	}
 
+	function CreateArticlesInContainer(articles, index) {
+		const newsCont = document.querySelector(`#news-wrapper-${index}`);
+		if (!newsCont) {
+			console.error(`Container not found for ${index}.`);
+			return;
+		}
 	function CreateArticlesInContainer(articles, index) {
 		const newsCont = document.querySelector(`#news-wrapper-${index}`);
 		if (!newsCont) {
@@ -115,127 +134,193 @@ document.addEventListener('DOMContentLoaded', async function () {
 		displayNewsByIndex(1);
 		console.log('top news button is clicked');
 	});
+	displayTopNewsBtn2.addEventListener('click', () => {
+		displayNewsByIndex(1);
+		console.log('top news button is clicked');
+	});
 
 	displayBusinessNewsBtn3.addEventListener('click', () => {
 		displayNewsByIndex(2);
 		console.log('business news button is clicked');
 	});
 
-	displayFavouritesBtn.addEventListener("click", () => {
-		displayFavourite();
-		console.log('favourite container');
+	//Andys kod
+	let currentDisplayIndex = 0;
+
+	const sortNewestBtn = document.querySelector('#sort-newest-btn');
+	const sortOldestBtn = document.querySelector('#sort-oldest-btn');
+
+	sortNewestBtn.addEventListener('click', () => {
+		sortArticlesByDate('newest');
 	});
 
-	//Andys kod
-		let currentDisplayIndex = 0;
-	
-		const sortNewestBtn = document.querySelector('#sort-newest-btn');
-		const sortOldestBtn = document.querySelector('#sort-oldest-btn');
-	
-		sortNewestBtn.addEventListener('click', () => {
-			sortArticlesByDate('newest');
-		});
-	
-		sortOldestBtn.addEventListener('click', () => {
-			sortArticlesByDate('oldest');
-		});
-	
-		function sortArticlesByDate(order) {
-			const storedData = localStorage.getItem(`newsData_${currentDisplayIndex}`);
-	
-			if (storedData) {
-				let articles = JSON.parse(storedData);
-	
-				articles.sort((a, b) => {
-					const dateA = new Date(a.publishedAt);
-					const dateB = new Date(b.publishedAt);
-	
-					if (order === 'newest') {
-						return dateB - dateA;
-					} else {
-						return dateA - dateB;
-					}
-				});
-	
-				localStorage.setItem(
-					`newsData_${currentDisplayIndex}`,
-					JSON.stringify(articles)
-				);
-				displayNewsByIndex(currentDisplayIndex);
-			} else {
-				console.error(`No data found for ${currentDisplayIndex}.`);
-			}
-		}
+	sortOldestBtn.addEventListener('click', () => {
+		sortArticlesByDate('oldest');
+	});
 
+	function sortArticlesByDate(order) {
+		const storedData = localStorage.getItem(`newsData_${currentDisplayIndex}`);
 
-	function updateFavouriteArticlesStorage() {
-		localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
-	}
+		if (storedData) {
+			let articles = JSON.parse(storedData);
 
-	function newFav(event) {
-		if (event.target.classList.contains('fav-btn')) {
-			const newsItem = event.target.closest('div');
-			// Ensure you're selecting the right element for the article title
-			const articleTitle = newsItem.querySelector('h3')?.textContent.trim();
+			articles.sort((a, b) => {
+				const dateA = new Date(a.publishedAt);
+				const dateB = new Date(b.publishedAt);
 
-			// Find the article in the globalArticles array
-			const article = globalArticles.flat().find(a => a.title === articleTitle);
-
-			if (article) {
-				// Checks if favouriteArticles already contains an article with the same title as the one pressed
-				const isFavourite = favouriteArticles.some(a => a.title === articleTitle);
-				if (isFavourite) {
-					// Remove from favorites
-					event.target.style.color = "#FFFFFF";
-					favouriteArticles = favouriteArticles.filter(a => a.title !== articleTitle);
-					console.log(favouriteArticles)
+				if (order === 'newest') {
+					return dateB - dateA;
 				} else {
-					// Add to favorites
-					event.target.style.color = "#FFBF00";
-					favouriteArticles.push(article);
-					console.log(favouriteArticles)
+					return dateA - dateB;
 				}
-				updateFavouriteArticlesStorage();
-			} else {
-				console.log("Article not found", articleTitle);
-			}
+			});
+
+			localStorage.setItem(
+				`newsData_${currentDisplayIndex}`,
+				JSON.stringify(articles)
+			);
+			displayNewsByIndex(currentDisplayIndex);
+		} else {
+			console.error(`No data found for ${currentDisplayIndex}.`);
 		}
 	}
 
-	function displayFavourite() {
-		const favContainer = document.querySelector(`#news-wrapper-3`);
-		console.log(favouriteArticles)
-		let newsItem = "";
-		favouriteArticles.forEach((article) => {
-			if (article.title && article.urlToImage && article.description) {
-				newsItem += 
-				`<div>
-				<img src="${article.urlToImage}" class="news-image" />
-	  			<h3>${article.title}</h3>
-	  			<p>${article.description}</p>
-	  			<a href="${article.url}" target="_blank">Visit the webpage</a>
-	  			<i class="fa-solid fa-star fav-btn"></i>
-			  	</div>`;
+
+
+	//Nataliias kod - Filtrering med keyword/author name/date/
+
+function filterArticles () {
+	
+	const searchInput = document.getElementById('search-input');
+	const filterInput = searchInput.value.trim().toLowerCase();
+	const newsCont = document.querySelector(`#news-wrapper-0`);
+	const articles = document.querySelectorAll(".news-item");
+  
+  articles.forEach(article => {
+	const titleText = article.querySelector('.news-title').textContent.toLowerCase();
+	const authorText = article.querySelector('.news-author').textContent.toLowerCase();
+	const descText = article.querySelector('.news-desc').textContent.toLowerCase();
+	const dateText = article.querySelector('.news-date').textContent;
+  
+	if (filterInput === '') {
+	  removeHighlight(titleElement);
+	  removeHighlight(authorElement);
+	  removeHighlight(descElement);
+	  removeHighlight(dateElement);
+	  return;
+	}
+  
+	const titleElement = article.querySelector('.news-title');
+	  const authorElement = article.querySelector('.news-author');
+	  const descElement = article.querySelector('.news-desc');
+	  const dateElement = article.querySelector('.news-date');
+  
+  
+  removeHighlight(titleElement);
+  removeHighlight(authorElement);
+  removeHighlight(descElement);
+  removeHighlight(dateElement);
+  
+  if (titleText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(titleElement, filterInput);
+  } else if (authorText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(authorElement, filterInput);
+  } else if (descText.includes(filterInput)) {
+	article.classList.remove('hidden');
+	highlightMatch(descElement, filterInput);
+	 } else if (dateText.includes(filterInput)) {
+		article.classList.remove('hidden');
+		highlightMatch(dateElement, filterInput);
+  } else {
+	article.classList.add('hidden');
+  }
+  });
+  }
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', filterArticles);
+  
+  function highlightMatch(element, filterInput) {
+	const innerHTML = element.innerHTML;
+	const index = innerHTML.toLowerCase().indexOf(filterInput);
+	const markedText = innerHTML.slice(0, index) + '<mark>' + innerHTML.slice(index, index + filterInput.length) + '</mark>' +
+	 innerHTML.slice(index + filterInput.length);
+	element.innerHTML = markedText;
+  }
+  function removeHighlight(element) {
+	element.innerHTML = element.textContent;
+	//element.innerHTML = "";
+  }
+
+  function updateFavouriteArticlesStorage() {
+	localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
+}
+
+function newFav(event) {
+	if (event.target.classList.contains('fav-btn')) {
+		const newsItem = event.target.closest('div');
+		// Ensure you're selecting the right element for the article title
+		const articleTitle = newsItem.querySelector('h3')?.textContent.trim();
+
+		// Find the article in the globalArticles array
+		const article = globalArticles.flat().find(a => a.title === articleTitle);
+
+		if (article) {
+			// Checks if favouriteArticles already contains an article with the same title as the one pressed
+			const isFavourite = favouriteArticles.some(a => a.title === articleTitle);
+			if (isFavourite) {
+				// Remove from favorites
+				event.target.style.color = "#FFFFFF";
+				favouriteArticles = favouriteArticles.filter(a => a.title !== articleTitle);
+				console.log(favouriteArticles)
+			} else {
+				// Add to favorites
+				event.target.style.color = "#FFBF00";
+				favouriteArticles.push(article);
+				console.log(favouriteArticles)
 			}
+			updateFavouriteArticlesStorage();
+		} else {
+			console.log("Article not found", articleTitle);
+		}
+	}
+}
+
+function displayFavourite() {
+	const favContainer = document.querySelector(`#news-wrapper-3`);
+	console.log(favouriteArticles)
+	let newsItem = "";
+	favouriteArticles.forEach((article) => {
+		if (article.title && article.urlToImage && article.description) {
+			newsItem += 
+			`<div>
+			<img src="${article.urlToImage}" class="news-image" />
+			  <h3>${article.title}</h3>
+			  <p>${article.description}</p>
+			  <a href="${article.url}" target="_blank">Visit the webpage</a>
+			  <i class="fa-solid fa-star fav-btn"></i>
+			  </div>`;
+		}
 /* 			const isFavourite = favouriteArticles.some(a => a.title === article.title);
-			const favBtn = newsItem.querySelector('.fav-btn');
-			favBtn.style.color = "#FFBF00"; */
-		})
-		favContainer.innerHTML = newsItem;
-		displayFavContainer();
-	}
+		const favBtn = newsItem.querySelector('.fav-btn');
+		favBtn.style.color = "#FFBF00"; */
+	})
+	favContainer.innerHTML = newsItem;
+	displayFavContainer();
+}
 
-	function displayFavContainer() {
-		const news0 = document.querySelector(`#news-wrapper-0`);
-		const news1 = document.querySelector(`#news-wrapper-1`);
-		const news2 = document.querySelector(`#news-wrapper-2`);
-		const favContainer = document.querySelector(`#news-wrapper-3`);
-		news0.style.display = "none";
-		news1.style.display = "none";
-		news2.style.display = "none";
-		favContainer.style.display = "block"
+function displayFavContainer() {
+	const news0 = document.querySelector(`#news-wrapper-0`);
+	const news1 = document.querySelector(`#news-wrapper-1`);
+	const news2 = document.querySelector(`#news-wrapper-2`);
+	const favContainer = document.querySelector(`#news-wrapper-3`);
+	news0.style.display = "none";
+	news1.style.display = "none";
+	news2.style.display = "none";
+	favContainer.style.display = "block"
 
-	}
+}
 
 
 	mainWrapper.addEventListener('click', newFav);
@@ -244,3 +329,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 const mainWrapper = document.querySelector('.main-wrapper');
 let favouriteArticles = JSON.parse(localStorage.getItem('favouriteArticles') || '[]');
 let globalArticles = [];
+
+
+

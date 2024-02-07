@@ -1,67 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="css/style.css" defer /> -->
-    <link rel="stylesheet" href="css/phone.css" defer />
-    <link rel="stylesheet" href="css/tablet.css" defer />
-	<link rel="stylesheet" href="css/desktop.css" defer />
-    <link rel="stylesheet" href="css/favorite.css">
-    <script src="https://kit.fontawesome.com/8f932c8a25.js" crossorigin="anonymous"></script>
-    <title>FF NEWS</title>
-  </head>
+	<head>
+		<!-- Google Analytics-spårningskode -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MR0Y7P1DP9"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+	
+			gtag('config', 'G-MR0Y7P1DP9');
+		</script>
+		<!-- slut på Google Analytics-spårningskod -->
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="stylesheet" href="css/style.css" defer /> -->
+		<link rel="stylesheet" href="css/phone.css" defer />
+		<link rel="stylesheet" href="css/tablet.css" defer />
+		<link rel="stylesheet" href="css/desktop.css" defer />
+		<script src="https://kit.fontawesome.com/e65a8fecf3.js" crossorigin="anonymous"></script>
+		<title>FF NEWS</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
-  <body>
-    <!-- Top Nav Menu -->
-    <main class="main-wrapper">
-      <header>
-        <div class="site-logo" id="nav-logo">
-          FF News
-          <!-- <img src="site-logo" alt="Website logo" /> -->
-        </div>
-        <nav class="recent-oldest">
-          <div class="recent" id="recent-news-btn">Recent</div>
-          <div class="oldest" id="oldest-news-btn">Oldest</div>
-        </nav>
+		  <!-- SEO Meta Tags -->
+		  <meta name="description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+		  <meta name="keywords" content="Nyhet, Topphändelser, Senaste nytt, Tech, Innovation, FunkyFetchers">
+		  <meta name="author" content="FunkyFetchers">
+	  
+		  <!-- Open Graph meta tags för delning på sociala medier -->
+		  <meta property="og:title" content="FunkyFetchers - Din nyhetssida">
+		  <meta property="og:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+		  <meta property="og:image" content="Länk till en bild för delning">
+		  <meta property="og:url" content="www.github.com/nikolovgenadi/funkyfetchers">
+	  
+		  <!-- Twitter Card meta tags för delning på Twitter -->
+		  <meta name="twitter:card" content="summary_large_image">
+		  <meta name="twitter:site" content="@FunkyFetchers">
+		  <meta name="twitter:title" content="FunkyFetchers - Din nyhetssida">
+		  <meta name="twitter:description" content="FunkyFetchers - Din källa för senaste nyheterna och topphändelserna inom tech-världen. Håll dig uppdaterad med de senaste trenderna och innovationerna.">
+		  <meta name="twitter:image" content="Länk till en bild för delning">
 
-        <nav class="topbar">
-          <div class="topbar-container">
-            <ul class="topbar-menu-items">
-              <li class="topbar-menu-item" id="news-wrapper-0-btn">All news</li>
-              <li class="topbar-menu-item" id="news-wrapper-1-btn">Top news</li>
-              <li class="topbar-menu-item" id="news-wrapper-2-btn">Business news</li>
-              <li class="topbar-menu-item" id="news-wrapper-3-btn">Latest news</li>
-              <li class="topbar-menu-item" id="news-wrapper-4-btn">Favourites</li>
-              <div class="search" id="search">
-                <input type="text" id="search-input" placeholder="Search..." />
-              </div>
-			  <div class="login">
-				<button id="login"><a href="signin.html">Log in</a></button>
-			  </div>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Sidebar Menu -->
-      <nav class="sidebar" id="sidebar">
-        <ul>
-          <li>Sidebar</li>
-          <li>Sidebar</li>
-        </ul>
-      </nav>
-<!-- news wrapper -->
-      <section class="news-wrapper" id="news-wrapper">
-        <section class="news-section" id="news-wrapper-0"></section>
-        <section class="news-section" id="news-wrapper-1"></section>
-        <section class="news-section" id="news-wrapper-2"></section>
-        <section class="news-section" id="news-wrapper-3"></section>
-      </section>
+		<link rel="stylesheet" href="style.css" />
 
-      <nav class="mobile-nav" id="menu-btn">Meny</nav>
-<!-- phone footer menu -->
-      <footer class="footer-menu">
+		<title>FF NEWS</title>
+	</head>
+
+	<body>
+		<!-- Top Nav Menu -->
+		<main class="main-wrapper">
+			<header>
+				<h1 class="ff-news-title">FF News</h1>
+				<nav class="topbar">
+					<div class="topbar-container">
+						<div class="topbar-menu-items">
+							<button class="topbar-menu-item" id="news-wrapper-0-btn"><i class="fa-solid fa-earth-europe"></i>All</button>
+							<button class="topbar-menu-item" id="news-wrapper-1-btn"><i class="fa-solid fa-fire"></i>Top </button>
+							<button class="topbar-menu-item" id="news-wrapper-2-btn"><i class="fa-solid fa-hand-holding-dollar"></i>Business</button>
+							<button class="topbar-menu-item" id="news-wrapper-4-btn"><i class="fa-regular fa-bookmark"></i>Bookmarks</button>
+							<button class="topbar-menu-item" id="sort-newest-btn" id="news-wrapper-5-btn"><i class="fa-solid fa-sort"></i>Newest</button>
+							<button class="topbar-menu-item" id="sort-oldest-btn" id="news-wrapper-6-btn"><i class="fa-solid fa-sort"></i>Oldest</button>
+							<button class="topbar-menu-item" id="login"><a href="signin.html"><i class="fa-regular fa-user"></i>Login</a></button>
+							<div class="search" id="search">
+								<input type="text" id="search-input" placeholder="Search..." />
+							</div>
+						</div>
+				</nav>
+			</header>
+			<!-- Sidebar Menu -->
+			<!-- <nav class="sidebar" id="sidebar">
+				<ul>
+					<li>Sidebar</li>
+					<li>Sidebar</li>
+				</ul>
+			</nav> -->
+			<!-- news wrapper -->
+			<section class="news-wrapper" id="news-wrapper">
+				<section class="news-section" id="news-wrapper-0"></section>
+				<section class="news-section" id="news-wrapper-1"></section>
+				<section class="news-section" id="news-wrapper-2"></section>
+			</section>
+
+			
+			<!-- <nav class="mobile-nav" id="menu-btn">Meny</nav> -->
+			<!-- phone footer menu -->
+			<!-- <footer class="footer-menu">
         <ul class="footer-menu-buttons">
           <li class="footer-menu-btn" id="news-wrapper-0-btn">All news</li>
           <li class="footer-menu-btn" id="news-wrapper-1-btn">Top news</li>
@@ -69,9 +94,9 @@
           <li class="footer-menu-btn" id="news-wrapper-3-btn">fav</li>
           <li class="footer-menu-btn"><a href="signin.html">Sign in</a></li>
         </ul>
-      </footer>
-      <script type="module" src="/main.js" defer></script>
-      <script type="module" src="/menu.js" defer></script>
-    </main>
-  </body>
+      </footer> -->
+			<script type="module" src="/main.js" defer></script>
+			<script type="module" src="/menu.js" defer></script>
+		</main>
+	</body>
 </html>
