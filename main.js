@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 				`newsData_${index}`,
 				JSON.stringify(dataObjects[index])
 			);
+			if (globalArticles.length > 1000) {
+				globalArticles = [];
+			}
 			globalArticles.push(articles);
+			console.log("After pushing: ", globalArticles)
 			displayAllNewsOnLoad();
 			// console.log(dataObjects[index]);
 		} catch (error) {
@@ -245,6 +249,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 		localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
 	}
 
+	// Lucas Code - Favourite marking function
 	function newFav(event) {
 		if (event.target.classList.contains('fav-btn')) {
 			const newsItem = event.target.closest('div');
@@ -307,7 +312,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 		news1.style.display = "none";
 		news2.style.display = "none";
 		favContainer.style.display = "block"
-
 	}
 
 	mainWrapper.addEventListener('click', newFav);
@@ -315,4 +319,4 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 const mainWrapper = document.querySelector('.main-wrapper');
 let favouriteArticles = JSON.parse(localStorage.getItem('favouriteArticles') || '[]');
-let globalArticles = [];
+let globalArticles = JSON.parse(localStorage.getItem('globalArticles') || '[]');
