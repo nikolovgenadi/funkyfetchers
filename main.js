@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {} from "../dist/ff.js"
 
 document.addEventListener('DOMContentLoaded', async function () {
 	let country = 'Sweden';
