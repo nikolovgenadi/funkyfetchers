@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {} from "../dist/ff.js"
+//import {} from "../dist/ff.js"
 
 document.addEventListener('DOMContentLoaded', async function () {
 	let country = 'Sweden';
@@ -183,37 +183,35 @@ document.addEventListener('DOMContentLoaded', async function () {
 	//Nataliias kod - Filtrering med keyword/author name/date/
 
 	function filterArticles() {
-
 		const searchInput = document.getElementById('search-input');
 		const filterInput = searchInput.value.trim().toLowerCase();
-		const newsCont = document.querySelector(`#news-wrapper-0`);
 		const articles = document.querySelectorAll(".news-item");
-
+	
 		articles.forEach(article => {
-			const titleText = article.querySelector('.news-title').textContent.toLowerCase();
-			const authorText = article.querySelector('.news-author').textContent.toLowerCase();
-			const descText = article.querySelector('.news-desc').textContent.toLowerCase();
-			const dateText = article.querySelector('.news-date').textContent;
-
+			const titleElement = article.querySelector('.news-title');
+			const authorElement = article.querySelector('.news-author');
+			const descElement = article.querySelector('.news-desc');
+			const dateElement = article.querySelector('.news-date');
+	
+			const titleText = titleElement.textContent.toLowerCase();
+			const authorText = authorElement.textContent.toLowerCase();
+			const descText = descElement.textContent.toLowerCase();
+			const dateText = dateElement.textContent;
+	
 			if (filterInput === '') {
 				removeHighlight(titleElement);
 				removeHighlight(authorElement);
 				removeHighlight(descElement);
 				removeHighlight(dateElement);
+				article.classList.remove('hidden');
 				return;
 			}
-
-			const titleElement = article.querySelector('.news-title');
-			const authorElement = article.querySelector('.news-author');
-			const descElement = article.querySelector('.news-desc');
-			const dateElement = article.querySelector('.news-date');
-
-
+	
 			removeHighlight(titleElement);
 			removeHighlight(authorElement);
 			removeHighlight(descElement);
 			removeHighlight(dateElement);
-
+	
 			if (titleText.includes(filterInput)) {
 				article.classList.remove('hidden');
 				highlightMatch(titleElement, filterInput);
@@ -231,21 +229,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 			}
 		});
 	}
+	
 	const searchInput = document.getElementById('search-input');
 	searchInput.addEventListener('input', filterArticles);
-
+	
 	function highlightMatch(element, filterInput) {
-		const innerHTML = element.innerHTML;
-		const index = innerHTML.toLowerCase().indexOf(filterInput);
-		const markedText = innerHTML.slice(0, index) + '<mark>' + innerHTML.slice(index, index + filterInput.length) + '</mark>' +
-			innerHTML.slice(index + filterInput.length);
+		const innerText = element.textContent;
+		const index = innerText.toLowerCase().indexOf(filterInput);
+		const markedText = innerText.slice(0, index) + '<mark>' + innerText.slice(index, index + filterInput.length) + '</mark>' + innerText.slice(index + filterInput.length);
 		element.innerHTML = markedText;
 	}
+	
 	function removeHighlight(element) {
 		element.innerHTML = element.textContent;
-		//element.innerHTML = "";
 	}
-
 	function updateFavouriteArticlesStorage() {
 		localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
 	}
