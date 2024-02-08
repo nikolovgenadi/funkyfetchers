@@ -40,7 +40,6 @@
       top: 0;
       position: fixed;
       z-index: 15;
-      margin-bottom: 55px;
     }
   
     /* MOBILE TOGGLE MENU  */
@@ -81,6 +80,7 @@
       height: auto;
       z-index: 10;
       background-color: rgb(39, 39, 39) ;
+      padding-top: 55px;
     }
   
     .news-wrapper div {
@@ -142,7 +142,7 @@
   /* MENU  */
 
   .ff-news-title {
-    font-size: 1.5rem;
+    font-size: 40px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 500;
   }
