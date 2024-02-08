@@ -307,7 +307,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 		news1.style.display = "none";
 		news2.style.display = "none";
 		favContainer.style.display = "block"
-
 	}
 
 	mainWrapper.addEventListener('click', newFav);
@@ -315,4 +314,4 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 const mainWrapper = document.querySelector('.main-wrapper');
 let favouriteArticles = JSON.parse(localStorage.getItem('favouriteArticles') || '[]');
-let globalArticles = [];
+let globalArticles = JSON.parse(localStorage.getItem('globalArticles') || '[]');
