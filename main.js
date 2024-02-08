@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 				`newsData_${index}`,
 				JSON.stringify(dataObjects[index])
 			);
+			if (globalArticles.length > 1000) {
+				globalArticles = [];
+			}
 			globalArticles.push(articles);
+			console.log("After pushing: ", globalArticles)
 			displayAllNewsOnLoad();
 			// console.log(dataObjects[index]);
 		} catch (error) {
@@ -245,6 +249,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 		localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
 	}
 
+	// Lucas Code - Favourite marking function
 	function newFav(event) {
 		if (event.target.classList.contains('fav-btn')) {
 			const newsItem = event.target.closest('div');
