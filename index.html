@@ -15,9 +15,9 @@
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- <link rel="stylesheet" href="css/style.css" defer /> -->
-		<link rel="stylesheet" href="css/phone.css" defer />
-		<link rel="stylesheet" href="css/tablet.css" defer />
-		<link rel="stylesheet" href="css/desktop.css" defer />
+		<link rel="stylesheet" href="css/phone.css" media="(max-width: 468px) and (min-width: 300px)" defer />
+		<link rel="stylesheet" href="css/tablet.css" media="(min-width: 469px) and (max-width: 1023px)" defer />
+		<link rel="stylesheet" href="css/desktop.css" media="(min-width: 1024px)" defer />
 		<script src="https://kit.fontawesome.com/e65a8fecf3.js" crossorigin="anonymous"></script>
 		<title>FF NEWS</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,6 @@
 		<!-- Top Nav Menu -->
 		<main class="main-wrapper">
 			<header>
-				<h1 class="ff-news-title">FF News</h1>
 				<nav class="topbar">
 					<div class="topbar-container">
 						<div class="topbar-menu-items">
@@ -62,7 +61,7 @@
 							<button class="topbar-menu-item" id="news-wrapper-3-btn"><i class="fa-regular fa-bookmark"></i>Bookmarks</button>
 							<button class="topbar-menu-item" id="sort-newest-btn" id="news-wrapper-5-btn"><i class="fa-solid fa-sort"></i>Newest</button>
 							<button class="topbar-menu-item" id="sort-oldest-btn" id="news-wrapper-6-btn"><i class="fa-solid fa-sort"></i>Oldest</button>
-							<button class="clear-fav-btn">Clear favourites</button>
+							<button class="topbar-menu-item" id="clear-fav-btn">Clear favourites</button>
 							<button class="topbar-menu-item" id="login"><a href="signin.html"><i class="fa-regular fa-user"></i>Login</a></button>
 							<div class="search" id="search">
 								<input type="text" id="search-input" placeholder="Search..." />
