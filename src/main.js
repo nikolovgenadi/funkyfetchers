@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import {} from "../dist/ff.js"
+import {} from "../dist/src/ff.js"
 
 document.addEventListener('DOMContentLoaded', async function () {
 	let country = 'Sweden';
@@ -318,3 +318,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 const mainWrapper = document.querySelector('.main-wrapper');
 let favouriteArticles = JSON.parse(localStorage.getItem('favouriteArticles') || '[]');
 let globalArticles = JSON.parse(localStorage.getItem('globalArticles') || '[]');
+
+// Exported function to get favorite articles
+export function getFavouriteArticles() {
+    return favouriteArticles;
+}
+
+// New function to set favorite articles
+export function setFavouriteArticles(newFavourites) {
+    favouriteArticles = newFavourites;
+    localStorage.setItem('favouriteArticles', JSON.stringify(favouriteArticles));
+}

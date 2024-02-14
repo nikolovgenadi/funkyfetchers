@@ -1,5 +1,13 @@
-console.log("hello")
+// Import the necessary function from the JavaScript module
+import {setFavouriteArticles} from "./main.js";
 
-let he:number = 1
+const clearFavBtn = document.querySelector(".clear-fav-btn");
 
-console.log(he)
+// Function to clear favorite articles
+export function clearFav() {
+    // Clear the array of favorite articles
+    setFavouriteArticles([]);
+}
+
+// Attach the event listener if the button exists
+clearFavBtn?.addEventListener("click", clearFav);
