@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 		console.log('Load all news on page load.');
 	}
 
-	// fix the reset for each array
 	const dataObjects = Array.from({ length: categories.length }, () => []);
 
 	for (let index = 0; index < categories.length; index++) {
@@ -49,9 +48,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 			'news-wrapper-0',
 			'news-wrapper-1',
 			'news-wrapper-2',
-			'news-wrapper-3',
-			'news-wrapper-4',
-		];
+			'news-wrapper-3'		];
 		const storedData = localStorage.getItem(`newsData_${index}`);
 		const newsCont = document.querySelector(`#news-wrapper-${index}`);
 
